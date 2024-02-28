@@ -1,19 +1,31 @@
-# Definir una matriz bidimensional de 3x3
+def imprimir_matriz(matriz):
+    for fila in matriz:
+        print(fila)
+
+def ordenar_fila(matriz, fila):
+    # Seleccionamos la fila específica y la ordenamos utilizando Selection Sort
+    n = len(matriz[0])
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if matriz[fila][j] < matriz[fila][min_index]:
+                min_index = j
+        matriz[fila][i], matriz[fila][min_index] = matriz[fila][min_index], matriz[fila][i]
+
+# Matriz bidimensional de 3x3
 matriz = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
+    [3, 1, 4],
+    [1, 5, 9],
+    [2, 6, 5]
 ]
 
-# Imprimir la matriz
-print("Matriz original:")
-for fila in matriz:
-    print(fila)
+# Imprimimos la matriz original
+print("Matriz Original:")
+imprimir_matriz(matriz)
 
-# Modificar un valor en la matriz (por ejemplo, cambiar el valor en la segunda fila y tercera columna)
-matriz[1][2] = 10
+# Ordenamos la segunda fila (índice 1) utilizando Selection Sort
+ordenar_fila(matriz, 1)
 
-# Imprimir la matriz después de la modificación
-print("\nMatriz modificada:")
-for fila in matriz:
-    print(fila)
+# Imprimimos la matriz después de ordenar la segunda fila
+print("\nMatriz Después de Ordenar la Segunda Fila:")
+imprimir_matriz(matriz)
